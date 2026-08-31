@@ -1,0 +1,3 @@
+{ "package": "mongoose", "from": "6.13.8", "to": "7.8.7", "difficulty": "hard",
+  "breaks": "Mongoose 7 removed callback support from Model.find and throws when one is passed.",
+  "expect": "repair" }

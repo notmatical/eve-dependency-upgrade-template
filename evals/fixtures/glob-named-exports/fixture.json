@@ -1,0 +1,8 @@
+{
+  "package": "glob",
+  "from": "8.1.0",
+  "to": "9.3.5",
+  "difficulty": "medium",
+  "breaks": "glob 9 removed the callback API; glob() returns a promise and never invokes the callback.",
+  "expect": "repair"
+}

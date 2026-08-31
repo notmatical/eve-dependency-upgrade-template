@@ -1,0 +1,6 @@
+{
+  "name": "fx-mongoose-callbacks",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": { "mongoose": "6.13.8" }
+}

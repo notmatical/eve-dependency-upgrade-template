@@ -1,0 +1,14 @@
+node_modules
+
+# eve build + dev artifacts
+.eve
+.output
+
+# Vercel link and pulled environment
+.vercel
+.env
+.env*.local
+
+*.log
+
+.env*

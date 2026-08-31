@@ -1,0 +1,6 @@
+{
+  "name": "fx-p-map",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": { "p-map": "4.0.0" }
+}

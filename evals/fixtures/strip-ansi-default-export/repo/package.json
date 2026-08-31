@@ -1,0 +1,6 @@
+{
+  "name": "fx-sync-api-esm-trap",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": { "strip-ansi": "6.0.1" }
+}

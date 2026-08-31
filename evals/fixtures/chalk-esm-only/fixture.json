@@ -1,0 +1,8 @@
+{
+  "package": "chalk",
+  "from": "4.1.2",
+  "to": "5.6.2",
+  "difficulty": "easy",
+  "breaks": "chalk 5 is ESM-only, so the CommonJS require no longer yields the chalk instance.",
+  "expect": "repair"
+}

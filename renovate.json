@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {
+      "description": "eve and its extension are version-matched through a compatibility manifest. Bumping one alone type-checks and then refuses to mount the extension at discovery time, so they have to move together.",
+      "groupName": "eve",
+      "matchPackageNames": ["eve", "@github-tools/**", "@vercel/connect"]
+    }
+  ]
+}

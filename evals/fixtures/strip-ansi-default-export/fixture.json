@@ -1,0 +1,9 @@
+{
+  "package": "strip-ansi",
+  "from": "6.0.1",
+  "to": "7.1.0",
+  "difficulty": "hard",
+  "breaks": "strip-ansi 7 is pure ESM. Under Node 22+, require() loads it but returns the module namespace, so the default export has to be unwrapped explicitly.",
+  "expect": "repair",
+  "note": "This was authored as an escalation fixture on the premise that an ESM-only dependency cannot be reached from a synchronous CommonJS export. That premise is wrong on Node 22 and later: require() loads a synchronous ESM graph fine, and `const { default: fn } = require(...)` preserves the sync contract. The agent found this and repaired it correctly, which is why the fixture was reclassified rather than the run marked failed. A genuinely unrepairable case needs a dependency with top-level await, where require() throws ERR_REQUIRE_ASYNC_MODULE and no synchronous route exists."
+}

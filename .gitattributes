@@ -1,0 +1,4 @@
+# Fixtures are executed by node on Linux CI runners; CRLF would break shebangs
+# and make the corpus fail for reasons that have nothing to do with an upgrade.
+* text=auto eol=lf
+*.png binary
