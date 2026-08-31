@@ -20,7 +20,7 @@ jobs:
     name: typecheck, tests, build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
@@ -37,7 +37,7 @@ jobs:
     # Its own job, not a step in `check`. This one reaches the npm registry twelve times, so a
     # network blip here must not be indistinguishable from a type error over there.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
