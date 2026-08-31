@@ -1,0 +1,3 @@
+{ "package": "node-fetch", "from": "2.7.0", "to": "3.3.2", "difficulty": "easy",
+  "breaks": "node-fetch 3 is ESM-only; require returns a namespace object rather than the fetch function.",
+  "expect": "repair" }

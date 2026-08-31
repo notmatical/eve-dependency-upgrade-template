@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # The corpus depends on packages published by other people. Versions get unpublished, a registry
+  # resolves differently, a transitive dependency changes behaviour — and a fixture that quietly
+  # stops breaking stops testing anything, which is the failure this whole corpus is built to avoid.
+  # A weekly run catches that drift while nobody is looking at it.
+  schedule:
+    - cron: "0 6 * * 1"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: typecheck, tests, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun test agent
+      # Proves the agent still compiles for deployment. `eve info` alone reports discovery problems;
+      # a build catches the ones that only appear when the bundle is assembled.
+      - run: bunx eve build
+
+  fixtures:
+    name: corpus integrity
+    runs-on: ubuntu-latest
+    # Its own job, not a step in `check`. This one reaches the npm registry twelve times, so a
+    # network blip here must not be indistinguishable from a type error over there.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: bun install --frozen-lockfile
+      # Each fixture must be green at the old version and red at the new one. A fixture that stays
+      # green after the bump is rejected, because it would inflate the published pass rate for free.
+      - run: bun run fixtures:check

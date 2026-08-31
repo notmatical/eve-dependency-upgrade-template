@@ -1,0 +1,3 @@
+{ "package": "strip-ansi", "from": "6.0.1", "to": "7.1.0", "difficulty": "easy",
+  "breaks": "strip-ansi 7 is ESM-only; the CommonJS require no longer yields a callable.",
+  "expect": "repair" }

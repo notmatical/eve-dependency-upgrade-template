@@ -1,0 +1,8 @@
+{
+  "name": "fx-uuid-deep-import",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "uuid": "3.4.0"
+  }
+}

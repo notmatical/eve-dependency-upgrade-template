@@ -1,0 +1,8 @@
+{
+  "package": "uuid",
+  "from": "3.4.0",
+  "to": "11.1.0",
+  "difficulty": "medium",
+  "breaks": "uuid 7 removed the uuid/v4 deep import in favour of the named v4 export; the repo skipped four majors.",
+  "expect": "repair"
+}

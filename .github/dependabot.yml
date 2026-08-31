@@ -1,0 +1,27 @@
+version: 2
+
+# This repository runs the upgrade bot it was built to assist, which is the point. Lockstep's own
+# dependencies go stale the same way everyone else's do, and a template that tells you to keep
+# current while sitting four majors behind would not be worth reading.
+#
+# It also means the agent's pull requests are, eventually, its own. Deploy it against this
+# repository and the loop closes: Dependabot opens the PR, CI goes red, Lockstep repairs it.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Grouped because they move together and share a compatibility manifest: eve and the GitHub
+      # extension are version-matched, and bumping one alone produces a build that will not mount.
+      eve:
+        patterns:
+          - eve
+          - "@github-tools/*"
+          - "@vercel/connect"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

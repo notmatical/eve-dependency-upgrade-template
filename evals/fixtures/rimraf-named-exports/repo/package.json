@@ -1,0 +1,6 @@
+{
+  "name": "fx-rimraf-named-exports",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": { "rimraf": "3.0.2" }
+}

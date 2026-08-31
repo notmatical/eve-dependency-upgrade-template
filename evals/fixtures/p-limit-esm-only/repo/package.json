@@ -1,0 +1,6 @@
+{
+  "name": "fx-p-limit-esm-only",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": { "p-limit": "3.1.0" }
+}
